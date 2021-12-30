@@ -16,7 +16,6 @@ class Todo(db.Model):
     def __repr__(self) -> str:
         return f"{self.sno} - {self.title}"
 
-
 @app.route('/' ,methods=['GET','POST'])
 def hello():
     if request.method=='POST':
@@ -30,8 +29,8 @@ def hello():
 
 @app.route('/delete/<int:sno>')
 def delete(sno):
-    todo=Todo.query.filter_by(sno=sno).first()
-    db.session.delete(todo)
+    todo1=Todo.query.filter_by(sno=sno).first()
+    db.session.delete(todo1)
     db.session.commit()
     return redirect("/")
 @app.route('/update/<int:sno>',methods=['GET','POST'])
